@@ -4,10 +4,10 @@ let mainWindow = null
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    minWidth: 300,
+    minWidth: 360,
     minHeight: 400,
     maxWidth: 400,
-    width: 300,
+    width: 360,
     height: 600,
     show: false,
   })
