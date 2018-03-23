@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-// import PixelDoc from '../store/pixelDoc';
+import PixelDoc from '../store/pixelDocElectron';
 import MainView from './MainView';
 
 export default class App extends Component {
@@ -10,8 +10,9 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    // this.pixelDoc = new PixelDoc()
-    // this.pixelDoc.on('update', ({info, doc}) => this.setState({info, doc}));
+    this.pixelDoc = new PixelDoc()
+    this.pixelDoc.on('update', ({info, doc}) => this.setState({info, doc}));
+    /*
     this.setState({
       "info": {
         "sourceKey": "45e4235c3f6efcda00ec43a2e67f8e44d3264f3d8d979acd9d625146c10a536b",
@@ -35,12 +36,15 @@ export default class App extends Component {
         "x1y1": "b"
       }
     });
+    */
   }
 
   setPixelColor(x, y, color) {
-    // this.pixelDoc.setPixelColor(x, y, color)
+    this.pixelDoc.setPixelColor(x, y, color)
+    /*
     const doc = Object.assign({}, this.state.doc, {[`x${x}y${y}`]: color})
     this.setState({doc})
+    */
   }
 
   render() {

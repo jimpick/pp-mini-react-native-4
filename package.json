@@ -21,13 +21,18 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "automerge": "^0.7.1",
     "babel-regenerator-runtime": "^6.5.0",
     "electron": "^1.8.4",
     "expo": "^25.0.0",
+    "hypercore-archiver": "^4.4.1",
+    "random-access-file": "^2.0.1",
+    "random-access-memory": "^2.4.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-electron": "^0.4.1",
-    "react-native-web": "^0.5.3"
+    "react-native-web": "^0.5.3",
+    "to-buffer": "^1.1.0"
   }
 }

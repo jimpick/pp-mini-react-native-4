@@ -24,7 +24,7 @@ export default class MainView extends Component {
   render() {
     const { info, doc, setPixelColor } = this.props;
     const { width, height } = Dimensions.get('window');
-    console.log('Jim dimensions', width, height);
+    // console.log('Jim dimensions', width, height);
     const palette = colors.map(color => {
       const style = {
         backgroundColor: cssColorMap[color],
