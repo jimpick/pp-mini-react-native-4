@@ -23,6 +23,7 @@
   "dependencies": {
     "automerge": "^0.7.1",
     "babel-regenerator-runtime": "^6.5.0",
+    "deep-equal": "^1.0.1",
     "electron": "^1.8.4",
     "expo": "^25.0.0",
     "hypercore-archiver": "^4.4.1",

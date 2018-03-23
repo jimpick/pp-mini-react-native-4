@@ -1,16 +1,22 @@
+import fs from 'fs'
 import electron from 'electron'
 import {EventEmitter} from 'events'
+import equal from 'deep-equal'
 import hypermergeMicro from '../lib/hypermerge-micro'
 
 require('events').prototype._maxListeners = 100
 
 const storage = `${electron.remote.app.getPath('userData')}/pp-mini`
 console.log('Storage path:', storage)
+const sourceFile = `${storage}/source`
 
 export default class PixelDoc extends EventEmitter {
   constructor () {
     super()
-    const key = localStorage.getItem('key')
+    let key
+    if (fs.existsSync(sourceFile)) {
+      key = fs.readFileSync(sourceFile, 'utf8')
+    }
     const hm = hypermergeMicro(storage, {key, debugLog: true})
     hm.on('debugLog', console.log)
     hm.on('ready', this.ready.bind(this))
@@ -41,7 +47,7 @@ export default class PixelDoc extends EventEmitter {
         length: feed.length
       })
     })
-    console.log('Jim info', info)
+    // console.log('Jim info', info)
     const updateDoc = {
       x0y0: doc.x0y0,
       x0y1: doc.x0y1,
@@ -57,7 +63,7 @@ export default class PixelDoc extends EventEmitter {
   ready () {
     const hm = this.hm
     console.log('Jim ready', hm.key.toString('hex'))
-    localStorage.setItem('key', hm.key.toString('hex'))
+    fs.writeFileSync(sourceFile, hm.source.key.toString('hex'))
     this.setupGlue()
     hm.doc.registerHandler(doc => {
       this.update(doc)
